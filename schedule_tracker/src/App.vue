@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <KI_HEADER title='Schedule Tracker' />
+    <AddSchedule @add-schedule="addSchedule" />
     <KI_Schedules @delete-schedule="deleteSchedule" @toggle-reminder="toggleReminder" :ki_schedules="ki_schedules" />
   </div>
 </template>
@@ -8,12 +9,14 @@
 <script>
 import KI_HEADER from './components/Header'
 import KI_Schedules from './components/Schedules'
+import AddSchedule from './components/AddSchedule'
 
 export default {
   name: 'App',
   components: {
     KI_HEADER,
-    KI_Schedules
+    KI_Schedules,
+    AddSchedule,
   },
   data() {
     return {
@@ -21,6 +24,10 @@ export default {
     }
   },
   methods:{
+    addSchedule(schedule){
+      this.ki_schedules = [...this.ki_schedules, schedule]
+      
+    },
     deleteSchedule(id) {
       if (confirm('Are your sure?')){
         this.ki_schedules = this.ki_schedules.filter((ki_schedule) => ki_schedule.id !== id)
