@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <KI_HEADER title='Schedule Tracker' />
-    <AddSchedule @add-schedule="addSchedule" />
+    <KI_HEADER title='Schedule Tracker' @toggle-add-schedule="toggleAddSchedule" />
+    <AddSchedule v-show="showAddSchedule" @add-schedule="addSchedule" />
     <KI_Schedules @delete-schedule="deleteSchedule" @toggle-reminder="toggleReminder" :ki_schedules="ki_schedules" />
   </div>
 </template>
@@ -20,10 +20,14 @@ export default {
   },
   data() {
     return {
-      ki_schedules: []
+      ki_schedules: [],
+      showAddSchedule: false
     }
   },
   methods:{
+    toggleAddSchedule(){
+      this.showAddSchedule = !this.showAddSchedule
+    },
     addSchedule(schedule){
       this.ki_schedules = [...this.ki_schedules, schedule]
       

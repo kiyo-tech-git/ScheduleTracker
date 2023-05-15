@@ -12,7 +12,7 @@ export default {
     },
     methods: {
         onClick(){
-            console.log("CLICKED")
+            this.$emit('toggle-add-schedule')
         }
     }
 }

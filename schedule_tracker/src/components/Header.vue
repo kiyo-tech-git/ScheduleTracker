@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>{{ title }}</h1>
-        <KI_BUTTON color='blue' text="Add Schedule"/>
+        <KI_BUTTON @toggle-add-schedule="$emit('toggle-add-schedule')" color='purple' text="Add Schedule"/>
     </header>
     
 </template>
